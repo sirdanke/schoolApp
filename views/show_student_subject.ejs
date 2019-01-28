@@ -27,10 +27,10 @@
                 <% subject.Students.forEach(student => { %>               
                 <tr>
                     <td><%=`${student.first_name} ${student.last_name}` %></td>
-                    <% if(student.ScoreId != undefined) { %>
+                    <% if(student.Score == undefined) { %>
                         <td><a href="/subjects/<%= student.ScoreId%>/give-score">give score</a></td>
                     <% } else {%>
-                        <td>student.StudentSubject.Score</td>
+                        <td><%= student.Score %></td>
                     <% } %>
                     
                 </tr>

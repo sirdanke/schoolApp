@@ -100,6 +100,7 @@ router.get('/:id/enrolled-students',(req,res)=> {
             subject.Students.forEach(student => {
                 if(d.StudentId == student.id) {
                     student.ScoreId = d.id
+                    student.Score = d.Score
                 }
             })        
         })
@@ -115,7 +116,7 @@ router.get('/:id/give-score', (req,res)=> {
 })
 
 router.post('/:id/give-score', (req,res)=> {
-    StudentSubjects.update( {Score: req.body.score}, { where : {id : req.params.id}})
+    StudentSubjects.update( {Score: Number(req.body.score)}, { where : {id : Number(req.params.id)}})
     .then(data => {
         // res.send(data)
         res.redirect('/subjects')
