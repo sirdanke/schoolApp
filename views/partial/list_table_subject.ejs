@@ -1,0 +1,32 @@
+
+
+
+ <thead>
+    <tr>
+        <th>id</th>
+        <th>Subject Name</th>
+        <th>Teacher</th>
+        <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% allData.forEach( subject => { %>
+    <tr>
+        <td><%= subject.id %></td>
+        <td><%= subject.subject_name %></td>
+   
+        <td> 
+            <ol>
+            <% if(subject.Teachers.length != 0) { %>
+               <%  for(let i = 0; i < subject.Teachers.length; i++) { %>
+              <li>  <%= ` ${subject.Teachers[i].first_name} ${subject.Teachers[i].last_name}` %> </li>
+                    <% } %> 
+                <% } else { %> 
+                    Unassigned
+            <% } %>
+            </ol>
+        </td>
+        <td><a href="/subjects/<%= subject.id %>/enrolled-students">Enrolled Student</a></td>       
+    </tr>
+    <% }) %>
+  </tbody>

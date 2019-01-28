@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include ./partial/bootstrap %>
+    <script src="main.js"></script>
+</head>
+<body>
+        <% include ./partial/navbar %>
+        <div class="container">
+            <h2>EDIT <%= name.slice(0, name.length-1).toUpperCase() %> DATA</h2>
+            <h3><a href="/<%= name %>">show all data</a></h3>
+                <form action="/<%= name %>/edit/<%= data.id %>" method="POST">
+
+                    <% if(name == 'subjects') { %>
+                        <% include ./partial/edit_subject %>
+                    <% } else if (name == 'teachers') { %>
+                        <% include ./partial/edit_teacher %>
+                    <% } else { %>                     
+                        <% include ./partial/edit_person %>
+                    <% } %>               
+                    <button type="submit" class="btn btn-default">Edit <%= name.slice(0,name.length-1) %></button>
+                </form>
+        </div>
+              
+    
+</body>
+</html>

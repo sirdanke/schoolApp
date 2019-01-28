@@ -1,0 +1,33 @@
+ <p> <%= error.err %></p>
+<div class="form-group">
+    <label>First Name:</label>
+    <input type="text" class="form-control" name="first_name" value="<%= data.first_name %>">
+</div>
+<div class="form-group">
+    <label>Last Name:</label>
+    <input type="text" class="form-control" name="last_name" value="<%= data.last_name %>">
+</div>
+<div class="form-group">
+    <label>Subject</label>
+    <select class="form-control" id="sel1" name="SubjectId" >
+
+        <% if(data.Subject == null) { %>
+            <% allSubjects.forEach(subject => { %>
+                     <option value="<%= Number(subject.id) %>"> <%= subject.subject_name %> </option>       
+             <% }) %>
+        <% } else  { %>
+            <% allSubjects.forEach(subject => { %>
+                <%  if(subject.subject_name == data.Subject.subject_name) { %>
+                     <option value="<%= Number(subject.id) %>" selected> <%= subject.subject_name %> </option>
+                <% } else { %>
+                     <option value="<%= Number(subject.id) %>"> <%= subject.subject_name %> </option>
+                <% } %>          
+             <% }) %>
+        <% } %>
+   
+    </select>
+</div> 
+<div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" name="email" value="<%= data.email %>">
+</div>

@@ -1,0 +1,38 @@
+<thead>
+    <tr>
+        <th>id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Option</th>
+    </tr>
+</thead>
+<tbody>
+    <% allData.forEach( person => { %>
+    <tr>
+        <td>
+            <%= person.id %>
+        </td>
+        <td>
+            <%= person.first_name %>
+        </td>
+        <td>
+            <%= person.last_name %>
+        </td>
+        <td>
+            <%= person.email %>
+        </td>
+        <% if (person.Subject == null) { %>
+        <td>Unassigned</td>
+        <% } else { %>
+        <td>
+            <%= person.Subject.subject_name %>
+        </td>
+        <% } %>
+
+        <td><a href="/<%= name %>/edit/<%= person.id %>">Edit</a> | <a href="/<%= name %>/delete/<%= person.id %>"
+                onclick="return confirm('delete this student ?')">Delete</a></td>
+    </tr>
+    <% }) %>
+</tbody>
