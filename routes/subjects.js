@@ -90,7 +90,7 @@ router.get('/:id/enrolled-students',(req,res)=> {
     let subject = ''
     Subjects.findOne({ where : {id : req.params.id }, include : [{model : Students}]})
     .then(allSubject => {
-        // res.send(allSubject)
+        res.send(allSubject)
         subject = allSubject
         return subject.getStudentSubjects()
     })
