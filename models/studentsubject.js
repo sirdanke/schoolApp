@@ -2,18 +2,18 @@
 module.exports = (sequelize, DataTypes) => {
   const StudentSubject = sequelize.define('StudentSubject', {
     id: {
-      allowNull: false,
-      autoIncrement: true,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      type: DataTypes.INTEGER
+      autoIncrement: true
     },
     StudentId: DataTypes.INTEGER,
     SubjectId: DataTypes.INTEGER,
     Score: DataTypes.INTEGER
   }, {});
+
   StudentSubject.associate = function (models) {
-    StudentSubject.belongsTo(models.Student)
-    StudentSubject.belongsTo(models.Subject)
+    // StudentSubject.belongsTo(models.Student)
+    // StudentSubject.belongsTo(models.Subject)
   };
   return StudentSubject;
 };

@@ -7,6 +7,7 @@ const Subjects = model.Subject
 const Students = model.Student
 const StudentSubjects = model.StudentSubject
 
+const convertScore = require('../helper/convert_score')
 
 
 router.get('/', (req,res)=> {
@@ -87,24 +88,10 @@ router.get('/delete/:id', (req,res)=> {
 })
 
 router.get('/:id/enrolled-students',(req,res)=> {
-    let subject = ''
+    
     Subjects.findOne({ where : {id : req.params.id }, include : [{model : Students}]})
-    .then(allSubject => {
-        res.send(allSubject)
-        subject = allSubject
-        return subject.getStudentSubjects()
-    })
-    .then(data => {
-
-        data.forEach(d => {
-            subject.Students.forEach(student => {
-                if(d.StudentId == student.id) {
-                    student.ScoreId = d.id
-                    student.Score = d.Score
-                }
-            })        
-        })
-        res.render( 'show_student_subject', {subject})
+    .then(subject => {
+            res.render( 'show_student_subject', {subject, convertScore})
     })
     .catch(err => {
         res.send(err)
@@ -118,7 +105,6 @@ router.get('/:id/give-score', (req,res)=> {
 router.post('/:id/give-score', (req,res)=> {
     StudentSubjects.update( {Score: Number(req.body.score)}, { where : {id : Number(req.params.id)}})
     .then(data => {
-        // res.send(data)
         res.redirect('/subjects')
     })
     .catch(err => {

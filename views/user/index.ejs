@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add New User</h2>
+        <p> <%= err %></p>
+        <form action="/users" method="POST">
+            <div class="form-group">
+                <label for="email">Name:</label>
+                <input class="form-control" id="email" placeholder="Enter name" name="name" type="text">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+
+
+
+    
+
+</body>
+
+</html>
